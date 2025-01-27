@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure text is above the background */
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Background animation */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://example.com/ai-background.png'); /* Replace with your background image URL */
+            background-size: cover;
+            animation: moveBackground 30s linear infinite;
+            z-index: 0; /* Ensure background is below the text */
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: -100% -100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>AI Fact</h1>
+        <p id="fact"></p>
+        <button id="nextFact">Next Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "AI can analyze data and make decisions faster than humans, often in real-time.",
+            "The term 'Artificial Intelligence' was first coined in 1956 by John McCarthy at the Dartmouth Conference.",
+            "AI is used in various applications, including healthcare, finance, and autonomous vehicles.",
+            "Machine learning, a subset of AI, allows systems to learn from data and improve over time without being explicitly programmed.",
+            "Natural Language Processing (NLP) enables AI to understand and generate human language, powering virtual assistants like Siri and Alexa.",
+            "AI can create art, music, and even write stories, showcasing its creative potential.",
+            "Deep learning, a type of machine learning, uses neural networks with many layers to analyze complex data patterns.",
+            "AI systems can outperform humans in specific tasks, such as playing chess or Go, but they lack general intelligence.",
+            "Ethical concerns around AI include bias in algorithms, job displacement, and the potential for misuse in surveillance.",
+            "AI is expected to contribute over $15 trillion to the global economy by 2030, transforming industries and creating new opportunities."
+        ];
+
+        let currentFactIndex = 0;
+
+        function displayFact() {
+            document.getElementById('fact').innerText = facts[currentFactIndex];
+        }
+
+        document.getElementById('nextFact').addEventListener('click', () => {
+            currentFactIndex = (currentFactIndex + 1) % facts.length;
+            displayFact();
+        });
+
+        // Display the first fact on page load
+        displayFact();
+    </script>
+</body>
+</html>
